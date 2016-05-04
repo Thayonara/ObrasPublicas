@@ -5,14 +5,12 @@ Feature Políticos:
 
 #CONTROLLER
   Scenario: Adicionar político não existente
-    Given que eu estou logado no sistema como "Administrador"
-    And o sistema não tem um político com nome “Eduardo” e CPF "01234567890”
+    Given o sistema não tem um político com nome “Eduardo” e CPF "01234567890”
     When eu tentar cadastrar um político com o nome “Eduardo” e CPF “01234567890”
     Then o sistema irá cadastrar o político com o nome “Eduardo” e CPF “01234567890”
 
   Scenario: Adicionar político existente
-    Given que eu estou logado no sistema como "Administrador"
-    And o sistema tem um político com nome “Eduardo” e CPF "01234567890”
+    Given o sistema tem um político com nome “Eduardo” e CPF "01234567890”
     When eu tentar cadastrar um político com o nome “Eduardo” e CPF “01234567890”
     Then o sistema não irá cadastrar o político
 
