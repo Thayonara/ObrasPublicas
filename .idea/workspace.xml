@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c015a3ee-bcdc-48eb-a2cf-c9030404414d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.travis.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/cucumber/Politico.feature" afterPath="$PROJECT_DIR$/test/cucumber/Politico.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/cucumber/steps/PoliticoSteps.groovy" afterPath="$PROJECT_DIR$/test/cucumber/steps/PoliticoSteps.groovy" />
     </list>
     <ignored path="ObrasPublicas.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -170,6 +169,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="dynamic.classpath" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ricardo\git\ObrasPublicas" />
+    </key>
   </component>
   <component name="RunManager" selected="Grails.Grails: ObrasPublicas">
     <configuration default="false" name="All in ObrasPublicas" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -623,7 +627,7 @@
       <option name="presentableId" value="Default" />
       <updated>1459357759522</updated>
       <workItem from="1459357764233" duration="258000" />
-      <workItem from="1464040987892" duration="4081000" />
+      <workItem from="1464040987892" duration="4542000" />
     </task>
     <task id="LOCAL-00001" summary="Ativando Travis">
       <created>1464046835051</created>
@@ -639,11 +643,18 @@
       <option name="project" value="LOCAL" />
       <updated>1464046933092</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Ajustes no cenario e feature">
+      <created>1464048186601</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1464048186601</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4339000" />
+    <option name="totallyTimeSpent" value="4800000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="723" extended-state="6" />
@@ -690,7 +701,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ativando Travis" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ativando Travis" />
+    <MESSAGE value="Ajustes no cenario e feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustes no cenario e feature" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
