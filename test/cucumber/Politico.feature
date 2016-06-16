@@ -14,6 +14,7 @@ Feature: Políticos
     Then o sistema nao ira cadastrar o politico de CPF "98765432109"
 
   Scenario: Atualizar político
+
     Given que exista um politico com nome “Eduardo” e CPF "01234567890”
     When eu tentar atualizar os dados do político  com nome “Eduardo” e CPF "01234567890”
     Then o sistema irá atualizar o político

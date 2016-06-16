@@ -56,7 +56,7 @@ Given(~'^o sistema tem um político chamado "([^"]*)" e CPF "([^"]*)"$'){
     assert politico != null
 }
 
-When (~'^eu tento remover o politico com o nome"([^"]*)" e CPF "([^"]*)"$') {
+When(~'^eu tento remover o politico com o nome"([^"]*)" e CPF "([^"]*)"$') {
     String politicoName, cpf ->                        //tem que verificar
      TestDataAndOperations.deletarPolitico(politicoName,cpf)//tem que verificar
 }
