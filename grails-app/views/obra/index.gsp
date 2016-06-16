@@ -23,37 +23,38 @@
 			<table>
 			<thead>
 					<tr>
-					
+						<g:sortableColumn property="nome" title="${message(code: 'obra.nome.label', default: 'Nome')}" />
+
+						<g:sortableColumn property="descricao" title="${message(code: 'obra.descricao.label', default: 'Descrição')}" />
+
 						<g:sortableColumn property="precoPlanejado" title="${message(code: 'obra.precoPlanejado.label', default: 'Preco Planejado')}" />
 					
 						<g:sortableColumn property="dataPlanejada" title="${message(code: 'obra.dataPlanejada.label', default: 'Data Planejada')}" />
-					
-						<g:sortableColumn property="dataTermino" title="${message(code: 'obra.dataTermino.label', default: 'Data Termino')}" />
-					
-						<g:sortableColumn property="descricao" title="${message(code: 'obra.descricao.label', default: 'Descricao')}" />
-					
-						<g:sortableColumn property="empresaResponsavel" title="${message(code: 'obra.empresaResponsavel.label', default: 'Empresa Responsavel')}" />
-					
-						<g:sortableColumn property="imagem" title="${message(code: 'obra.imagem.label', default: 'Imagem')}" />
-					
+
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${obraInstanceList}" status="i" var="obraInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${obraInstance.id}">${fieldValue(bean: obraInstance, field: "precoPlanejado")}</g:link></td>
+
+						<td>${fieldValue(bean: obraInstance, field: "nome")}</td>
+
+						<td>${fieldValue(bean: obraInstance, field: "descricao")}</td>
+
+						<td>${fieldValue(bean: obraInstance, field: "precoPlanejado")}</td>
 					
 						<td><g:formatDate date="${obraInstance.dataPlanejada}" /></td>
-					
-						<td><g:formatDate date="${obraInstance.dataTermino}" /></td>
-					
-						<td>${fieldValue(bean: obraInstance, field: "descricao")}</td>
-					
-						<td>${fieldValue(bean: obraInstance, field: "empresaResponsavel")}</td>
-					
-						<td>${fieldValue(bean: obraInstance, field: "imagem")}</td>
-					
+
+						<td><g:link class="edit" action="edit" resource="${obraInstance}"><img src="${assetPath(src: 'document-write.png')}" width="50px"/></g:link></td>
+
+
+						<td>
+						<g:form url="[resource:obraInstance, action:'delete']" method="DELETE">
+							<g:actionSubmitImage value="${message(code: 'default.button.delete.label', default: 'Delete')}" action="delete"
+								onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"
+								 src="${assetPath(src: 'DeleteRed.png')}" width="50px"/>
+						</g:form>
+						</td>
 					</tr>
 				</g:each>
 				</tbody>
