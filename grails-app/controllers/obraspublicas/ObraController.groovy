@@ -8,9 +8,48 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ObraController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = []
 
     def index(Integer max) {
+        params.max = Math.min(max ?: 10, 100)
+        respond Obra.list(params), model:[obraInstanceCount: Obra.count()]
+    }
+
+    def relatorioAtrasada() {
+        float taxaAtrasada=0
+        if(Obra.list().size()>0) {
+            for (int i = 0; i < Obra.list().size(); i++) {
+                if (Obra.list().get(i).dataTermino > Obra.list().get(i).dataPlanejada) {
+                    taxaAtrasada++
+                }
+            }
+
+            taxaAtrasada = taxaAtrasada / Obra.list().size()
+
+            taxaAtrasada = taxaAtrasada * 100
+        }
+        respond Obra.list(params), model:[taxaAtrasada: taxaAtrasada]
+    }
+
+    def relatorioEstourada() {
+        float taxaEstouro=0
+        if(Obra.list().size()>0) {
+
+            for (int i = 0; i < Obra.list().size(); i++) {
+                if (Obra.list().get(i).precoFinal > Obra.list().get(i).precoPlanejado) {
+                    taxaEstouro++
+                }
+            }
+
+            taxaEstouro = taxaEstouro / Obra.list().size()
+
+            taxaEstouro = taxaEstouro * 100
+        }
+
+        respond Obra.list(params), model:[taxaEstouro: taxaEstouro]
+    }
+
+    def relatorios(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Obra.list(params), model:[obraInstanceCount: Obra.count()]
     }
