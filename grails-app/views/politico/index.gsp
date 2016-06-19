@@ -57,7 +57,6 @@
 
 						<td><g:link class="edit" action="edit" resource="${politicoInstance}"><img src="${assetPath(src: 'document-write.png')}" width="50px"/></g:link></td>
 
-
 						<td>
 							<g:form url="[resource:politicoInstance, action:'delete']" method="DELETE">
 								<g:actionSubmitImage value="${message(code: 'default.button.delete.label', default: 'Delete')}" action="delete"
