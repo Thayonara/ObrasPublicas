@@ -31,6 +31,33 @@ class TestDataAndOperations {
              longitude          : 40,
              empresaResponsavel : "Edu Dubeux"//,
              //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("98765432109")
+            ],
+
+
+            [nome               : "Escola do Moura",
+             descricao          : "Praça localizada na Varzea",
+             imagem             : "http://www.turismonorecife.com.br/sites/default/files/praca_do_arsenal_0.jpg",
+             precoPlanejado     : 1250465000.23,
+             precoFinal         : 25000000.50,
+             dataPlanejada      : (new Date("25 October 2012")),
+             dataTermino        : (new Date("12 October 2016")),
+             latitude           : 12,
+             longitude          : 45,
+             empresaResponsavel : "Moura Dubeux"//,
+             //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")
+            ],
+
+            [nome               : "Hospital Thayonara",
+             descricao          : "Rua do Morro",
+             imagem             : "http://www.turismonorecife.com.br/sites/default/files/praca_do_arsenal_0.jpg",
+             precoPlanejado     : 1256540000.23,
+             precoFinal         : 25006540000.50,
+             dataPlanejada      : (new Date("12 October 2012")),
+             dataTermino        : (new Date("22 October 2016")),
+             latitude           : 12,
+             longitude          : 45,
+             empresaResponsavel : "Moura Dubeux"//,
+             //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")
             ]
     ]
 
@@ -94,6 +121,17 @@ class TestDataAndOperations {
         cont.response.reset()
     }
 
+    static public int qtdObrasAtrasadas() {
+        int qtdObrasAtradas=0
+       for(int i=0;i<obras.size();i++){
+           if(obras.get(i).dataTermino>obras.get(i).dataPlanejada){
+               qtdObrasAtradas++
+           }
+       }
+
+        return qtdObrasAtradas
+    }
+
     static public void createPolitico(String cpf) {
         def cont = new PoliticoController()
         cont.params << TestDataAndOperations.findPoliticoByCPF(cpf)
@@ -153,4 +191,20 @@ class TestDataAndOperations {
         }
         return compatible
     }
+
+    static public double relatorioAtraso() {
+        float taxaAtrasada=0
+        for (int i=0;i<obras.size();i++){
+            if(obras.get(i).dataTermino>obras.get(i).dataPlanejada) {
+                taxaAtrasada++
+            }
+        }
+
+        taxaAtrasada=taxaAtrasada/obras.size()
+
+        taxaAtrasada=taxaAtrasada*100
+
+        return taxaAtrasada
+    }
+
 }

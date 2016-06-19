@@ -14,6 +14,12 @@ Scenario: Adicionar obra existente
   When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
   Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
 
+
+  Scenario: Buscar percentual de obras atrasadas
+    Given que o sistema tem uma lista de "4" Obras
+    And o sistema tem "3" obra atrasada
+    Then o percentual de atrasos sera de "75" por cento
+
 Scenario: Visualizar obra
   Given que um visitante esta logado no sistema como "guilherme"
   And  o sistema tem uma obra com o nome "Praca do arsenal"

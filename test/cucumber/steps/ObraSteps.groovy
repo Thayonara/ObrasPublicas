@@ -24,7 +24,7 @@ When(~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
 Then(~'^o sistema ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
 	Obra obra = Obra.findByNome(nomeObra)
-	assert TestDataAndOperations.compatibleTo(obra, nomeObra)
+	assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
 }
 
 
@@ -47,6 +47,26 @@ Then(~'^o sistema nao ira cadastrar a obra de nome "([^"]*)"$'){
     assert obras.size() == 1
 }
 
+//Scenario: Buscar percentual de obras atrasadas
+//Given que o sistema tem uma lista de "4" Obras
+//And o sistema tem "3" obra atrasada
+//Then o percentual de atrasos sera de "75" por cento
+Given(~'^que o sistema tem uma lista de "([^"]*)" Obras$'){
+	int qtdObras ->
+	obras = TestDataAndOperations.getObras()
+		assert obras.size()==qtdObras
+}
+
+And(~'^o sistema tem "([^"]*)" obra atrasada$'){
+	int qtdObrasAtrasadas ->
+		int qtdAtrasos = TestDataAndOperations.qtdObrasAtrasadas();
+	assert qtdAtrasos==qtdObrasAtrasadas
+}
+
+Then(~'^o percentual de atrasos sera de "([^"]*)" por cento$'){
+	int percentualAtrasos ->
+	assert TestDataAndOperations.relatorioAtraso()==percentualAtrasos
+}
 
 //GUI
 //Scenario: Receber atualizações da obra por email
@@ -123,7 +143,7 @@ When(~'^eu tento atualizar os dados da obra com o nome"([^"]*)"$'){
 Then(~'^o sistema atualiza a obra"([^"]*)"$'){
 	String nomeObra ->
 	Obra obra = Obra.findByName(nomeObra)
-	assert TestDataAndOperations.compatibleTo(obra, nomeObra)
+	assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
 }
 
 When(~'^eu seleciono a opção Compartilhar na Rede Social com o email "([^"]*)" e senha "([^"]*)"$') {
