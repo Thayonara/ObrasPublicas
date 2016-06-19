@@ -132,6 +132,18 @@ class TestDataAndOperations {
         return qtdObrasAtradas
     }
 
+
+    static public int qtdObrasEstouradas() {
+        int qtdObrasAtradas=0
+        for(int i=0;i<obras.size();i++){
+            if(obras.get(i).precoFinal>obras.get(i).precoPlanejado){
+                qtdObrasAtradas++
+            }
+        }
+
+        return qtdObrasAtradas
+    }
+
     static public void createPolitico(String cpf) {
         def cont = new PoliticoController()
         cont.params << TestDataAndOperations.findPoliticoByCPF(cpf)
@@ -205,6 +217,21 @@ class TestDataAndOperations {
         taxaAtrasada=taxaAtrasada*100
 
         return taxaAtrasada
+    }
+
+    static public double relatorioEstouro() {
+        float taxaEstouro=0
+        for (int i=0;i<obras.size();i++){
+            if(obras.get(i).precoFinal>obras.get(i).precoPlanejado) {
+                taxaEstouro++
+            }
+        }
+
+        taxaEstouro=taxaEstouro/obras.size()
+
+        taxaEstouro=taxaEstouro*100
+
+        return taxaEstouro
     }
 
 }

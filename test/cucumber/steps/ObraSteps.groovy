@@ -68,6 +68,27 @@ Then(~'^o percentual de atrasos sera de "([^"]*)" por cento$'){
 	assert TestDataAndOperations.relatorioAtraso()==percentualAtrasos
 }
 
+//Scenario: Buscar percentual de obras com orcamento estourado
+//Given que o sistema tem uma lista de "4" Obras com seus orcamentos
+//And o sistema tem "3" obra com orcamento estourado
+//Then o percentual de orcamento estourado sera de "75" por cento
+Given(~'^que o sistema tem uma lista de "([^"]*)" Obras com seus orcamentos$'){
+	int qtdObras ->
+		obras = TestDataAndOperations.getObras()
+		assert obras.size()==qtdObras
+}
+
+And(~'o sistema tem "([^"]*)" obra com orcamento estourado$'){
+	int qtdObrasAtrasadas ->
+		int qtdAtrasos = TestDataAndOperations.qtdObrasAtrasadas();
+		assert qtdAtrasos==qtdObrasAtrasadas
+}
+
+Then(~'^o percentual de orcamento estourado sera de "([^"]*)" por cento$'){
+	int percentualAtrasos ->
+		assert TestDataAndOperations.relatorioAtraso()==percentualAtrasos
+}
+
 //GUI
 //Scenario: Receber atualizações da obra por email
 //	Given  eu estou visualizando a obra “Praça do arsenal”
