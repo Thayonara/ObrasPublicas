@@ -8,7 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class ObraController {
 
-    static allowedMethods = []
+    static allowedMethods = [update: "PUT"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -62,8 +62,20 @@ class ObraController {
         respond new Obra(params)
     }
 
+    def verificarStatusAndamentoObra(){
+        def obraInstance = Obra.get(params.id)
+
+        obraInstance.verificarStatusAndamentoObra()
+
+        obraInstance.save flush:true
+
+        redirect (action: "index")
+    }
+
+
     @Transactional
-    def save(Obra obraInstance) {
+    def save() {
+        Obra obraInstance = new Obra(params)
         if (obraInstance == null) {
             notFound()
             return
@@ -113,7 +125,8 @@ class ObraController {
     }
 
     @Transactional
-    def delete(Obra obraInstance) {
+    def delete() {
+        def obraInstance = Obra.get(params.id)
 
         if (obraInstance == null) {
             notFound()

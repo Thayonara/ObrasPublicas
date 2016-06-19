@@ -1,12 +1,12 @@
 package util
 
 class Endereco {
-        int numero
-        String rua
-        String bairro
-        String cidade
-        String estado
-        String CEP
+    int numero
+    String rua
+    String bairro
+    String cidade
+    String estado
+    String CEP
 
     static constraints = {
     }

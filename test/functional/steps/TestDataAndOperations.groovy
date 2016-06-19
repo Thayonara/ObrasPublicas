@@ -61,6 +61,17 @@ class TestDataAndOperations {
             ]
     ]
 
+    static politicoObra = [
+            [nomeObra: "Praca do arsenal",
+             cpfResponsavel: "01234567891"],
+
+            [nomeObra: "Ilha do retiro",
+             cpfResponsavel: "98765432109"],
+
+            [nomeObra: "Praca atrasada",
+             cpfResponsavel: "98765432109"]
+    ]
+
     static enderecos = [
             [numero: 323,
              rua: "Avenida camarao",
@@ -95,14 +106,16 @@ class TestDataAndOperations {
              email    : "robsobra@obra.com"]
     ]
 
+
+
     static public def findObraByNome(String obraNome) {
-        obras.find { obra ->
+        return obras.find { obra ->
             obra.nome == obraNome
         }
     }
 
     static public def findPoliticoByCPF(String politicoCPF) {
-        politicos.find { politico ->
+        return politicos.find { politico ->
             politico.cpf == politicoCPF
         }
     }
@@ -110,6 +123,18 @@ class TestDataAndOperations {
     static public def findEnderecoByCEPAndNumero(String CEP, int numero){
         enderecos.find { endereco ->
             endereco.CEP == CEP && endereco.numero == numero
+        }
+    }
+
+    static public def findPoliticoObraByNome(String nomeObra){
+        politicoObra.find { poliObra ->
+            poliObra.nomeObra == nomeObra
+        }
+    }
+
+    static public def findPoliticoObraByCPF(String cpfResponsavel){
+        politicoObra.findAll { poliObra ->
+            poliObra.cpfResponsavel == cpfResponsavel
         }
     }
 
@@ -144,33 +169,77 @@ class TestDataAndOperations {
         return qtdObrasAtradas
     }
 
-    static public void createPolitico(String cpf) {
-        def cont = new PoliticoController()
-        cont.params << TestDataAndOperations.findPoliticoByCPF(cpf)
-        Politico politico = TestDataAndOperations.findPoliticoByCPF(cpf)
-        cont.create()
-        cont.save(politico)
-        cont.response.reset()
-    }
 
-    static public void createEndereco(String CEP, int numero) {
-        def cont = new EnderecoController()
-        cont.params << TestDataAndOperations.findEnderecoByCEPAndNumero(CEP, numero)
+    static public void createPolitico(String politicoCPF) {
+        def cont = new PoliticoController()
+        cont.params << TestDataAndOperations.findPoliticoByCPF(politicoCPF)
+        cont.request.setContent(new byte[1000])
         cont.create()
         cont.save()
         cont.response.reset()
     }
 
-    static public boolean obraCompatibleTo(politico, nomePolitico, cpf) {
-        def testPolitico = TestDataAndOperations.findPoliticoByCPF(cpf)
+    static public void createEndereco(String CEP, int numero) {
+        def cont = new EnderecoController()
+        cont.params << TestDataAndOperations.findEnderecoByceoAndNumero(CEP, numero)
+        cont.create()
+        cont.save()
+        cont.response.reset()
+    }
+
+    static public void removeObra(String nomeObra){
+        def testObra = Obra.findByNome(nomeObra)
+        def cont = new ObraController()
+        cont.params << [id: testObra.id]
+        cont.delete()
+
+        cont.response.reset()
+    }
+
+    //TODO
+    static public void atualizaObra(String nomeObra) {
+
+    }
+
+    //TODO
+    static public void atualizaPolitico(String politicoCPF) {
+
+    }
+
+    //TODO
+    static public void atualizaEndereco(String enderecoCEP) {
+
+    }
+
+    static public void sincronizarStatusAndamentoObra(String nomeObra){
+        def testObra = Obra.findByNome(nomeObra)
+        def cont = new ObraController()
+        cont.params << [id: testObra.id]
+
+        cont.verificarStatusAndamentoObra()
+        cont.response.reset()
+    }
+
+    //TODO
+    static public boolean verificarStatusAndamentoObra(String nomeObra, String statusAndamentoEsperado){
+        def obra = Obra.findByNome(nomeObra)
+
+        return obra.getStatusAndamentObra() == statusAndamentoEsperado
+    }
+
+    static public boolean obraCompatibleTo(obra, nomeObra) {
+        def testObra = TestDataAndOperations.findObraByNome(nomeObra)
         def compatible = false
-        if (testPolitico == null && politico == null) {
+        if (testObra == null && obra == null) {
             compatible = true
-        } else if (testPolitico != null && politico != null) {
+        } else if (testObra != null && obra != null) {
             compatible = true
-            testPolitico.each { key, data ->
-                compatible = compatible && (politico."$key" == data)
+            testObra.each { key, data ->
+                compatible = compatible && (obra."$key" == data)
             }
+
+            def poliObra = TestDataAndOperations.findPoliticoObraByNome(nomeObra)
+            compatible = compatible && (poliObra.cpfResponsavel == obra.politicoResponsavel.cpf)
         }
 
         return compatible

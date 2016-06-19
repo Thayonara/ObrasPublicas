@@ -1,20 +1,21 @@
+@ignore
 Feature: Políticos
   As a usuário do sistema
   I want to adicionar, remover, modificar e visualizar políticos no sistema
   So That eu posso gerar páginas web para exibir informações sobre o político
 
 #CONTROLLER
-  Scenario: Adicionar politico nao existente
-    Given que o sistema nao tem um politico com CPF "01234567891"
-    When eu tentar cadastrar um politico com CPF "01234567891"
-    Then o sistema ira cadastrar o politico de CPF "01234567891"
+  Scenario: Adicionar político não existente
+    Given o sistema não tem um político com nome “Eduardo” e CPF "01234567890”
+    When eu tentar cadastrar um político com o nome “Eduardo” e CPF “01234567890”
+    Then o sistema irá cadastrar o político com o nome “Eduardo” e CPF “01234567890”
 
-  Scenario: Adicionar politico existente
-    Given que o sistema tem um politico de CPF "98765432109"
-    Then o sistema nao ira cadastrar o politico de CPF "98765432109"
+  Scenario: Adicionar político existente
+    Given o sistema tem um político com nome “Eduardo” e CPF "01234567890”
+    When eu tentar cadastrar um político com o nome “Eduardo” e CPF “01234567890”
+    Then o sistema não irá cadastrar o político
 
   Scenario: Atualizar político
-
     Given que exista um politico com nome “Eduardo” e CPF "01234567890”
     When eu tentar atualizar os dados do político  com nome “Eduardo” e CPF "01234567890”
     Then o sistema irá atualizar o político
@@ -41,7 +42,7 @@ Feature: Políticos
     When “Guilherme” tenta visualizar o político  “Anderson”  com o CPF “102.102.152-15”
     Then “Guilherme” conseguirá visualizar as informações
 
-Scenario: Editar informações de um politico
+  Scenario: Editar informações de um politico
     Given que o usuário esta na tela de atualizar político visualizando o  político “Eduardo” com cpf “01234567890”
     When ao  tentar atualizar os dados do político “Eduardo” com cpf “01234567890”
     Then eu recebo a mensagem de confirmação

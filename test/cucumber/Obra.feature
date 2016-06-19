@@ -4,72 +4,63 @@ Feature: Obra
   So That eu posso gerar paginas web para exibir informacoes sobre a obra
 
 #CONTROLLER
-Scenario: Adicionar obra nao existente
-  Given que o sistema nao tem uma obra chamada "Praca do arsenal"
-  When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
-  Then o sistema ira cadastrar a obra de nome "Praca do arsenal"
+  Scenario: Adicionar obra nao existente
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
+    Then o sistema ira cadastrar a obra de nome "Praca do arsenal"
 
-Scenario: Adicionar obra existente
-  Given que o sistema tem uma obra chamada "Praca do arsenal"
-  When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
-  Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
+  Scenario: Adicionar obra existente
+    Given que o sistema tem uma obra chamada "Praca do arsenal"
+    When eu tentar cadastrar uma obra com o nome "Praca do arsenal"
+    Then o sistema nao ira cadastrar a obra de nome "Praca do arsenal"
 
-Scenario: Buscar percentual de obras atrasadas
-  Given que o sistema tem uma lista de "4" Obras
-  And o sistema tem "3" obra atrasada
-  Then o percentual de atrasos sera de "75" por cento
+  Scenario: Buscar percentual de obras atrasadas
+    Given que o sistema tem uma lista de "4" Obras
+    And o sistema tem "3" obra atrasada
+    Then o percentual de atrasos sera de "75" por cento
 
-Scenario: Buscar percentual de obras com orcamento estourado
-  Given que o sistema tem uma lista de "4" Obras com seus orcamentos
-  And o sistema tem "3" obra com orcamento estourado
-  Then o percentual de orcamento estourado sera de "75" por cento
+  Scenario: Buscar percentual de obras com orcamento estourado
+    Given que o sistema tem uma lista de "4" Obras com seus orcamentos
+    And o sistema tem "3" obra com orcamento estourado
+    Then o percentual de orcamento estourado sera de "75" por cento
 
-  Scenario: Visualizar obra
-  Given que um visitante esta logado no sistema como "guilherme"
-  And  o sistema tem uma obra com o nome "Praca do arsenal"
-  When ele tentar visualizar a obra com o nome "Praca do arsenal"
-  Then o sistema mostrara as informacoes relacionadas a obra
+  Scenario: Atualizar obra
+    Given que o sistema nao tem uma obra chamada "Praca do arsenal"
+    When eu tentar atualizar os dados da obra com o nome "Praca do arsenal"
+    Then o sistema atualiza a obra com o nome "Praca do arsenal"
 
-Scenario: Atualizar obra
-  Given que existe uma obra no sistema chamada "Praca do Arsenal"
-  When eu tentar atualizar os dados da obra com o nome "Praça do Arsenal"
-  Then o sistema atualiza a obra
-
-Scenario: Remover obra nao existente
-  Given que eu estou logado no sistema como Administrador e o sistema nao tem uma obra chamada "Praca do arsenal"
+  Scenario: Remover obra existente
+    Given que o sistema tem uma obra chamada "Praca do arsenal"
     When eu tentar remover a obra com o nome "Praca do arsenal"
-    Then o sistema nao ira remover
+    Then o sistema ira remover a obra com nome "Praca do arsenal"
 
-Scenario: Remover obra existente 
-    Given que eu estou logado no sistema como Administrador e o sistema tem uma obra chamada "Praca do arsenal"
-    When eu tentar remover a obra com o nome "Praca do arsenal"
-    Then o sistema ira remover a obra
-
+  Scenario: Verificar status andamento obra
+    Given que o sistema tem uma obra chamada "Praca atrasada" que esta atrasada mas esta com status "emDia"
+    When eu tentar verificar o status da obra com o nome "Praca atrasada"
+    Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"
 
 #GUI
-Scenario: Receber atualizacoes da obra por email
-  Given  eu estou visualizando a obra "Praca do arsenal"
-  When eu seleciono a opcao "Receber atualizacao por email"
-  And preencho o campo de email com o email "teste@obralimpa.com"
-  Then eu vejo uma mensagem de confirmacao
-  And passo a receber o relatorio de alteracoes da obra no email "teste@obralimpa.com"
+  Scenario: Receber atualizacoes da obra por email
+    Given eu estou visualizando a obra "Praca do arsenal"
+    When eu seleciono a opcao "Receber atualizacao por email"
+    And preencho o campo de email com o email "teste@obralimpa.com"
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal" e email "teste@obralimpa.com"
 
-Scenario: Visualizar obra
-  Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"
-  When o usuario seleciona a obra "Praca do arsenal"
-  Then o sistema exibe os detalhes da obra "Praca do arsenal"
+  Scenario: Visualizar obra
+    Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal"
+    When o usuario seleciona a obra "Praca do arsenal"
+    Then o sistema exibe os detalhes da obra "Praca do arsenal"
 
-Scenario: Nova pagina de obra
-  Given eu estou no menu de "obras"
-  And nao existe uma obra com nome "Praca do Arsenal" na lista de obras
-  When eu seleciono a opcao "Cadastrar"
-  And eu tento cadastrar a obra com o nome "Praca do Arsenal"
-  And seleciono a opcao "Salvar"
-  Then eu recebo uma mensagem de confirmacao
-  And vejo o nome "Praca do arsenal"
+  Scenario: Nova pagina de obra
+    Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras
+    When eu seleciono a opcao "Cadastrar"
+    And eu tento cadastrar a obra com o nome "Praca do Arsenal"
+    And seleciono a opcao "Salvar"
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"
 
-Scenario: compartilhar obra na rede social
-  Given eu estou visualizando a obra "Praca do Arsenal"
-  When  eu seleciono a opcao Compartilhar na Rede Social com o email "teste@teste.com" e senha "senha"
-  Then eu vejo uma mensagem de confirmacao
-  And passo visualizar na minha rede social a postagem com o nome "Praca do Arsenal"
+  Scenario: compartilhar obra na rede social
+    Given eu estou visualizando a obra "Praca do arsenal"
+    When  eu seleciono a opcao "Compartilhar na Rede Social"
+    And preencho os campos com o email "teste@teste.com" e senha "senha"
+    Then eu vejo uma mensagem de confirmacao com o nome "Praca do arsenal"
+    And passo visualizar na minha rede social a postagem com o nome "Praca do Arsenal"
