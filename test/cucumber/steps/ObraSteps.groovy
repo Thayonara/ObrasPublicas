@@ -13,10 +13,10 @@ import steps.TestDataAndOperations
 //	When eu tentar cadastrar uma obra com o nome “Praça do arsenal”
 //	Then o sistema irá cadastrar a obra de nome "Praça do arsenal"
 /**
- * @author = ehmr
- */
+* @author = ehmr
+*/
 Given(~'^que o sistema nao tem uma obra chamada "([^"]*)"$'){
-	String nomeObra ->
+	String nomeObra -> 
 		Obra obra = Obra.findByNome(nomeObra)
 		assert obra == null
 		//assert true
@@ -24,7 +24,7 @@ Given(~'^que o sistema nao tem uma obra chamada "([^"]*)"$'){
 
 When(~'^eu tentar cadastrar uma obra com o nome "([^"]*)"$'){
 	String nomeObra ->
-		TestDataAndOperations.createObra(nomeObra)
+    	TestDataAndOperations.createObra(nomeObra)
 }
 
 Then(~'^o sistema ira cadastrar a obra de nome "([^"]*)"$'){
@@ -39,8 +39,8 @@ Then(~'^o sistema ira cadastrar a obra de nome "([^"]*)"$'){
 //	When eu tentar cadastrar uma obra com o nome “Praça do arsenal”
 //	Then o sistema não irá cadastrar a obra de nome "Praça do arsenal"
 /**
- * @author = ehmr
- */
+* @author = ehmr
+*/
 Given(~'^que o sistema tem uma obra chamada "([^"]*)"$'){
 	String nomeObra ->
 		TestDataAndOperations.createObra(nomeObra)
@@ -51,8 +51,9 @@ Given(~'^que o sistema tem uma obra chamada "([^"]*)"$'){
 Then(~'^o sistema nao ira cadastrar a obra de nome "([^"]*)"$'){
 	String nomeObra ->
 		obras = Obra.findAllByNome(nomeObra)
-		assert obras.size() == 1
+    	assert obras.size() == 1
 }
+
 
 //Scenario: Buscar percentual de obras atrasadas
 //Given que o sistema tem uma lista de "4" Obras
@@ -132,16 +133,16 @@ Then(~'^o sistema exibe os detalhes da obra "([^"]*)"$'){
 //	Then eu vejo uma mensagem de confirmação
 //	And passo a receber o relatório de alterações da obra no email  “teste@obralimpa.com”
 /**
- * @author = ehmr
- */
+* @author = ehmr
+*/
 Given(~'^eu estou visualizando a obra "([^"]*)"$') {
 	String nomeObra ->
 		TestDataAndOperations.createObra(nomeObra)
 		to ObraListPage
 		at ObraListPage
-		assert page.checkObraAtList(nomeObra) == true
-		page.selectObraAtList(nomeObra)
-		at ObraShowPage
+	  	assert page.checkObraAtList(nomeObra) == true
+	  	page.selectObraAtList(nomeObra)
+    	at ObraShowPage
 }
 
 When(~'^eu seleciono a opcao "([^"]*)"$') {
@@ -158,7 +159,7 @@ And(~'^preencho o campo de email com o email "([^"]*)"$'){
 
 Then(~'^eu vejo uma mensagem de confirmacao com o nome "([^"]*)" e email "([^"]*)"$'){
 	String nomeObra, email ->
-		//throw new PendingException()
+	    //throw new PendingException()
 		//assert page.verifyPageContainsText(email) == true
 		assert false
 }
@@ -207,19 +208,19 @@ Then (~'^o sistema ira remover a obra com nome "([^"]*)"$'){
 //	Then o sistema ira atualizar obra com nome "Praca atrasada" para "atrasada"
 Given(~'^que o sistema tem uma obra chamada "([^"]*)" que esta atrasada mas esta com status "([^"]*)"$'){
 	String nomeObra, statusAndamentoObra ->
-		TestDataAndOperations.createObra(nomeObra)
-		Obra testObra = Obra.findByNome(nomeObra)
-		assert testObra != null
+        TestDataAndOperations.createObra(nomeObra)
+        Obra testObra = Obra.findByNome(nomeObra)
+        assert testObra != null
 }
 
 When (~'^eu tentar verificar o status da obra com o nome "([^"]*)"$'){
 	String nomeObra ->
-		TestDataAndOperations.sincronizarStatusAndamentoObra(nomeObra)
+        TestDataAndOperations.sincronizarStatusAndamentoObra(nomeObra)
 }
 
 Then (~'^o sistema ira atualizar obra com nome "([^"]*)" para "([^"]*)"$'){
 	String nomeObra, statusAndamentoObra ->
-		assert TestDataAndOperations.verificarStatusAndamentoObra(nomeObra, ObraStrings."$statusAndamentoObra")
+        assert TestDataAndOperations.verificarStatusAndamentoObra(nomeObra, ObraStrings."$statusAndamentoObra")
 }
 
 //other gui

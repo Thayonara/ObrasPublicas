@@ -89,7 +89,7 @@
 		<h2>Escolha uma opção:</h2>
 		<ul>
 			<li class="controller"><a href="relatorioAtrasada">Obras atrasadas</a></li>
-			<li class="controller"><a href="relatorioEstourada">Obras com orçamento atrasado de Obra</a></li>
+			<li class="controller"><a href="relatorioEstourada">Obras com orçamento atrasado</a></li>
 		</ul>
 	</div>
 </div>

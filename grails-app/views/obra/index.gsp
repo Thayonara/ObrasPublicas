@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="${resource(dir:'css', file: 'obra.css')}"/>
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'obra.label', default: 'Obra')}" />
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
@@ -35,24 +36,28 @@
 				</thead>
 				<tbody>
 				<g:each in="${obraInstanceList}" status="i" var="obraInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+					<tr  class="${obraInstance.statusAndamento ? 'highLightGreen' : 'highLightRed'}">
 
-						<td>${fieldValue(bean: obraInstance, field: "nome")}</td>
+						<td><g:link action="show" id="${obraInstance.id}">${fieldValue(bean: obraInstance, field: "nome")}</g:link></td>
 
 						<td>${fieldValue(bean: obraInstance, field: "descricao")}</td>
 
-						<td>${fieldValue(bean: obraInstance, field: "precoPlanejado")}</td>
-					
-						<td><g:formatDate date="${obraInstance.dataPlanejada}" /></td>
+						<td>
+							<g:form url="[resource:obraInstance, action:'verificarStatusAndamentoObra']">
+								<fieldset class="buttons">
+									<g:actionSubmit class="Verificar" action="verificarStatusAndamentoObra" value="Verificar Andamento"/>
+								</fieldset>
+							</g:form>
+						</td>
 
-						<td><g:link class="edit" action="edit" resource="${obraInstance}"><img src="${assetPath(src: 'document-write.png')}" width="50px"/></g:link></td>
+						<td><g:link class="edit" action="edit" resource="${obraInstance}"><img src="${assetPath(src: 'editIco.png')}" width="50px"/></g:link></td>
 
 
 						<td>
 						<g:form url="[resource:obraInstance, action:'delete']" method="DELETE">
 							<g:actionSubmitImage value="${message(code: 'default.button.delete.label', default: 'Delete')}" action="delete"
 								onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"
-								 src="${assetPath(src: 'DeleteRed.png')}" width="50px"/>
+								 src="${assetPath(src: 'deleteIco.png')}" width="50px"/>
 						</g:form>
 						</td>
 					</tr>

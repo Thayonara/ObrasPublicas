@@ -1,64 +1,81 @@
 package steps
 
 import obraspublicas.*
-
 import util.EnderecoController
 
 class TestDataAndOperations {
 
-    static obras = [
-            [nome               : "Praca do arsenal",
-             descricao          : "Praça localizada no recife antigo",
-             imagem             : "http://www.turismonorecife.com.br/sites/default/files/praca_do_arsenal_0.jpg",
-             precoPlanejado     : 1250000.23,
-             precoFinal         : 25000000.50,
-             dataPlanejada      : (new Date("12 October 2012")),
-             dataTermino        : (new Date("12 October 2016")),
-             latitude           : 12,
-             longitude          : 45,
-             empresaResponsavel : "Moura Dubeux"//,
-             //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")
-            ],
+        static obras = [
+        [nome               : "Praca do arsenal",
+        descricao          : "Praça localizada no recife antigo",
+        imagem             : "http://www.turismonorecife.com.br/sites/default/files/praca_do_arsenal_0.jpg",
+        precoPlanejado     : 1250000.23,
+        precoFinal         : 25000000.50,
+        dataPlanejada      : (new Date("12 October 2012")),
+        dataTermino        : (new Date("12 October 2016")),
+        latitude           : 12,
+        longitude          : 45,
+        empresaResponsavel : "Moura Dubeux"//,
+        //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")
+        ],
 
-            [nome               : "Ilha do Retiro",
-             descricao          : "Casa do leão",
-             imagem             : "youtube.com.br",
-             precoPlanejado     : 1250000.23,
-             precoFinal         : 1200000.50,
-             dataPlanejada      : (new Date("12 October 2017")),
-             dataTermino        : (new Date("12 October 2010")),
-             latitude           : 12,
-             longitude          : 40,
-             empresaResponsavel : "Edu Dubeux"//,
-             //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("98765432109")
-            ],
+        [nome               : "Ilha do Retiro",
+        descricao          : "Casa do leão",
+        imagem             : "youtube.com.br",
+        precoPlanejado     : 1250000.23,
+        precoFinal         : 1200000.50,
+        dataPlanejada      : (new Date("12 October 2017")),
+        dataTermino        : (new Date("12 October 2010")),
+        latitude           : 12,
+        longitude          : 40,
+        empresaResponsavel : "Edu Dubeux"//,
+        //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("98765432109")
+        ],
 
 
-            [nome               : "Escola do Moura",
-             descricao          : "Praça localizada na Varzea",
-             imagem             : "http://www.turismonorecife.com.br/sites/default/files/praca_do_arsenal_0.jpg",
-             precoPlanejado     : 1250465000.23,
-             precoFinal         : 25000000.50,
-             dataPlanejada      : (new Date("25 October 2012")),
-             dataTermino        : (new Date("12 October 2016")),
-             latitude           : 12,
-             longitude          : 45,
-             empresaResponsavel : "Moura Dubeux"//,
-             //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")
-            ],
+        [nome               : "Escola do Moura",
+        descricao          : "Praça localizada na Varzea",
+        imagem             : "http://www.turismonorecife.com.br/sites/default/files/praca_do_arsenal_0.jpg",
+        precoPlanejado     : 1250465000.23,
+        precoFinal         : 25000000.50,
+        dataPlanejada      : (new Date("25 October 2012")),
+        dataTermino        : (new Date("12 October 2016")),
+        latitude           : 12,
+        longitude          : 45,
+        empresaResponsavel : "Moura Dubeux"//,
+        //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")
+        ],
 
-            [nome               : "Hospital Thayonara",
-             descricao          : "Rua do Morro",
-             imagem             : "http://www.turismonorecife.com.br/sites/default/files/praca_do_arsenal_0.jpg",
-             precoPlanejado     : 1256540000.23,
-             precoFinal         : 25006540000.50,
-             dataPlanejada      : (new Date("12 October 2012")),
-             dataTermino        : (new Date("22 October 2016")),
-             latitude           : 12,
-             longitude          : 45,
-             empresaResponsavel : "Moura Dubeux"//,
-             //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")
-            ]
+        [nome               : "Hospital Thayonara",
+        descricao          : "Rua do Morro",
+        imagem             : "http://www.turismonorecife.com.br/sites/default/files/praca_do_arsenal_0.jpg",
+        precoPlanejado     : 1256540000.23,
+        precoFinal         : 25006540000.50,
+        dataPlanejada      : (new Date("12 October 2012")),
+        dataTermino        : (new Date("22 October 2016")),
+        latitude           : 12,
+        longitude          : 45,
+        empresaResponsavel : "Moura Dubeux"//,
+        //politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")
+        ]
+    ]
+
+    static politicos = [
+            [partido  : "Partido Pernambucano",
+             foto     : "youtube.com",
+             descricao: "Esse é virado no mói de coentro",
+             qualidade: 10.0,
+             nome     : "Eduardo Lokão",
+             cpf      : "01234567891",
+             email    : "eduobra@obra.com"],
+
+            [partido  : "PT",
+             foto     : "youtube.com",
+             descricao: "Esse é LADRÃO",
+             qualidade: 0.0,
+             nome     : "Robson nada Lokão",
+             cpf      : "98765432109",
+             email    : "robsobra@obra.com"]
     ]
 
     static politicoObra = [
@@ -88,26 +105,6 @@ class TestDataAndOperations {
              CEP: "12345-67"]
     ]
 
-    static politicos = [
-            [partido  : "Partido Pernambucano",
-             foto     : "youtube.com",
-             descricao: "Esse é virado no mói de coentro",
-             qualidade: 10.0,
-             nome     : "Eduardo Lokão",
-             cpf      : "01234567891",
-             email    : "eduobra@obra.com"],
-
-            [partido  : "PT",
-             foto     : "youtube.com",
-             descricao: "Esse é LADRÃO",
-             qualidade: 0.0,
-             nome     : "Robson nada Lokão",
-             cpf      : "98765432109",
-             email    : "robsobra@obra.com"]
-    ]
-
-
-
     static public def findObraByNome(String obraNome) {
         return obras.find { obra ->
             obra.nome == obraNome
@@ -115,7 +112,7 @@ class TestDataAndOperations {
     }
 
     static public def findPoliticoByCPF(String politicoCPF) {
-        return politicos.find { politico ->
+        politicos.find { politico ->
             politico.cpf == politicoCPF
         }
     }
@@ -139,41 +136,23 @@ class TestDataAndOperations {
     }
 
     static public void createObra(String obraNome) {
+        def poliObra = TestDataAndOperations.findPoliticoObraByNome(obraNome)
+
+        if(Politico.findAllByCpf(poliObra.cpfResponsavel).size() == 0)
+            TestDataAndOperations.createPolitico(poliObra.cpfResponsavel)
+
         def cont = new ObraController()
-        cont.params << TestDataAndOperations.findObraByNome(obraNome) << [politicoResponsavel: TestDataAndOperations.findPoliticoByCPF("01234567891")]
+        cont.params << TestDataAndOperations.findObraByNome(obraNome) << [politicoResponsavel: Politico.findByCpf(poliObra.cpfResponsavel)]
+        cont.request.setContent(new byte[1000])
         cont.create()
         cont.save()
         cont.response.reset()
     }
 
-    static public int qtdObrasAtrasadas() {
-        int qtdObrasAtradas=0
-       for(int i=0;i<obras.size();i++){
-           if(obras.get(i).dataTermino>obras.get(i).dataPlanejada){
-               qtdObrasAtradas++
-           }
-       }
-
-        return qtdObrasAtradas
-    }
-
-
-    static public int qtdObrasEstouradas() {
-        int qtdObrasAtradas=0
-        for(int i=0;i<obras.size();i++){
-            if(obras.get(i).precoFinal>obras.get(i).precoPlanejado){
-                qtdObrasAtradas++
-            }
-        }
-
-        return qtdObrasAtradas
-    }
-
-
-    static public void createPolitico(String politicoCPF) {
+    static public void createPolitico(String cpf) {
         def cont = new PoliticoController()
-        cont.params << TestDataAndOperations.findPoliticoByCPF(politicoCPF)
-        cont.request.setContent(new byte[1000])
+        cont.params << TestDataAndOperations.findPoliticoByCPF(cpf)
+        Politico politico = TestDataAndOperations.findPoliticoByCPF(cpf)
         cont.create()
         cont.save()
         cont.response.reset()
@@ -273,6 +252,29 @@ class TestDataAndOperations {
         return compatible
     }
 
+    static public int qtdObrasAtrasadas() {
+        int qtdObrasAtradas=0
+        for(int i=0;i<obras.size();i++){
+            if(obras.get(i).dataTermino>obras.get(i).dataPlanejada){
+                qtdObrasAtradas++
+            }
+        }
+
+        return qtdObrasAtradas
+    }
+
+
+    static public int qtdObrasEstouradas() {
+        int qtdObrasAtradas=0
+        for(int i=0;i<obras.size();i++){
+            if(obras.get(i).precoFinal>obras.get(i).precoPlanejado){
+                qtdObrasAtradas++
+            }
+        }
+
+        return qtdObrasAtradas
+    }
+
     static public double relatorioAtraso() {
         float taxaAtrasada=0
         for (int i=0;i<obras.size();i++){
@@ -302,5 +304,4 @@ class TestDataAndOperations {
 
         return taxaEstouro
     }
-
 }

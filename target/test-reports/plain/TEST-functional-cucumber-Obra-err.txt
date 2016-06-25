@@ -1,12 +1,11 @@
 
 --Output from Adicionar obra nao existente--
---Output from Adicionar obra existente--
 --Output from Buscar percentual de obras atrasadas--
 --Output from Buscar percentual de obras com orcamento estourado--
---Output from Visualizar obra--
+--Output from Adicionar obra existente--
 --Output from Atualizar obra--
---Output from Remover obra nao existente--
 --Output from Remover obra existente--
+--Output from Verificar status andamento obra--
 --Output from Receber atualizacoes da obra por email--
 --Output from Visualizar obra--
 --Output from Nova pagina de obra--

@@ -126,7 +126,7 @@
 				<li class="fieldcontain">
 					<span id="statusValor-label" class="property-label">Status</span>
 
-					<span class="property-value" aria-labelledby="statusValor-label">${obraInstance?.statusOrcamento}</span>
+					<span class="property-value" aria-labelledby="statusValor-label">${obraInstance?.statusAndamento}</span>
 
 				</li>
 

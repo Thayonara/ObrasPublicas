@@ -1,6 +1,5 @@
 
 --Output from Adicionar politico nao existente--
---Output from Adicionar politico nao existente--
 --Output from Adicionar politico existente--
 --Output from Atualizar político--
 --Output from Remover político existente--
