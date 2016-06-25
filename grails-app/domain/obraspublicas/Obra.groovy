@@ -44,6 +44,14 @@ class Obra {
         return this.dataTermino.getDay() + "/" + this.dataTermino.getMonth() + "/" + this.dataTermino.getYear()
     }
 
+    public boolean isEstourada(){
+        return precoFinal>precoPlanejado;
+    }
+
+    public boolean isAtrasada(){
+        return dataTermino>dataPlanejada;
+    }
+
     public void verificarStatusAndamentoObra(){
         if(dataTermino == null){
             if(System.currentTimeMillis() > this.dataPlanejada.getTime())

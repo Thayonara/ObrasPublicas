@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="5" failures="1" hostname="Rick-PC" name="Obra" tests="11" time="3.974" timestamp="2016-06-25T15:44:20">
+<testsuite errors="7" failures="1" hostname="Rick-PC" name="Obra" tests="11" time="14.98" timestamp="2016-06-25T17:24:26">
   <properties />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra nao existente" time="1.244" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Buscar percentual de obras atrasadas" time="0.126" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Buscar percentual de obras com orcamento estourado" time="0.128" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra existente" time="0.271" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Atualizar obra" time="0.263">
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra nao existente" time="6.489" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Buscar percentual de obras atrasadas" time="0.78">
+    <error message="No signature of method: java.util.LinkedHashMap.isAtrasada() is applicable for argument types: () values: []" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: java.util.LinkedHashMap.isAtrasada() is applicable for argument types: () values: []
+	at steps.TestDataAndOperations.qtdObrasAtrasadas(TestDataAndOperations.groovy:258)
+	at ObraSteps$_run_closure7.doCall(ObraSteps.groovy:70)
+	at ✽.And o sistema tem &quot;3&quot; obra atrasada(Obra.feature:14)
+</error>
+  </testcase>
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Buscar percentual de obras com orcamento estourado" time="0.901">
+    <error message="No signature of method: java.util.LinkedHashMap.isAtrasada() is applicable for argument types: () values: []" type="groovy.lang.MissingMethodException">groovy.lang.MissingMethodException: No signature of method: java.util.LinkedHashMap.isAtrasada() is applicable for argument types: () values: []
+	at steps.TestDataAndOperations.qtdObrasAtrasadas(TestDataAndOperations.groovy:258)
+	at ObraSteps$_run_closure10.doCall(ObraSteps.groovy:91)
+	at ✽.And o sistema tem &quot;3&quot; obra com orcamento estourado(Obra.feature:19)
+</error>
+  </testcase>
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Adicionar obra existente" time="0.663" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Atualizar obra" time="0.605">
     <failure message="assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)&#xa;                             |                |     |&#xa;                             false            null  Praca do arsenal" type="grails.plugin.cucumber.FakeAssertionFailedError">Assertion failed: 
 
 assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
@@ -16,8 +28,8 @@ assert TestDataAndOperations.obraCompatibleTo(obra, nomeObra)
 	at ✽.Then o sistema atualiza a obra com o nome &quot;Praca do arsenal&quot;(Obra.feature:30)
 </failure>
   </testcase>
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Remover obra existente" time="0.298" />
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Verificar status andamento obra" time="0.187">
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Remover obra existente" time="0.553" />
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Verificar status andamento obra" time="0.191">
     <error message="Ambiguous method overloading for method org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap#leftShift.&#xa;Cannot resolve which method to invoke for [null] due to overlapping prototypes between:&#xa;&#x9;[interface java.util.Map]&#xa;&#x9;[interface java.util.Map$Entry]" type="groovy.lang.GroovyRuntimeException">groovy.lang.GroovyRuntimeException: Ambiguous method overloading for method org.codehaus.groovy.grails.web.servlet.mvc.GrailsParameterMap#leftShift.
 Cannot resolve which method to invoke for [null] due to overlapping prototypes between:
 	[interface java.util.Map]
@@ -27,8 +39,8 @@ Cannot resolve which method to invoke for [null] due to overlapping prototypes b
 	at ✽.Given que o sistema tem uma obra chamada &quot;Praca atrasada&quot; que esta atrasada mas esta com status &quot;emDia&quot;(Obra.feature:38)
 </error>
   </testcase>
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Receber atualizacoes da obra por email" time="0.475">
-    <error message="failed to create driver from callback &apos;script14668694636301314453061$_run_closure1@5f019587&apos;" type="geb.driver.DriverCreationException">geb.driver.DriverCreationException: failed to create driver from callback &apos;script14668694636301314453061$_run_closure1@5f019587&apos;
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Receber atualizacoes da obra por email" time="1.2">
+    <error message="failed to create driver from callback &apos;script14668754796731314453061$_run_closure1@2b0f175c&apos;" type="geb.driver.DriverCreationException">geb.driver.DriverCreationException: failed to create driver from callback &apos;script14668754796731314453061$_run_closure1@2b0f175c&apos;
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -50,7 +62,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:107)
-	at script14668694636301314453061$_run_closure1.doCall(script14668694636301314453061.groovy:8)
+	at script14668754796731314453061$_run_closure1.doCall(script14668754796731314453061.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -83,8 +95,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
 </error>
   </testcase>
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Visualizar obra" time="0.152">
-    <error message="failed to create driver from callback &apos;script14668694640951314453061$_run_closure1@59fce433&apos;" type="geb.driver.DriverCreationException">geb.driver.DriverCreationException: failed to create driver from callback &apos;script14668694640951314453061$_run_closure1@59fce433&apos;
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Visualizar obra" time="0.175">
+    <error message="failed to create driver from callback &apos;script14668754807401314453061$_run_closure1@60dcbbf4&apos;" type="geb.driver.DriverCreationException">geb.driver.DriverCreationException: failed to create driver from callback &apos;script14668754807401314453061$_run_closure1@60dcbbf4&apos;
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -106,7 +118,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:107)
-	at script14668694640951314453061$_run_closure1.doCall(script14668694640951314453061.groovy:8)
+	at script14668754807401314453061$_run_closure1.doCall(script14668754807401314453061.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -139,8 +151,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
 </error>
   </testcase>
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Nova pagina de obra" time="0.118">
-    <error message="failed to create driver from callback &apos;script14668694643041314453061$_run_closure1@583f6355&apos;" type="geb.driver.DriverCreationException">geb.driver.DriverCreationException: failed to create driver from callback &apos;script14668694643041314453061$_run_closure1@583f6355&apos;
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="Nova pagina de obra" time="0.1">
+    <error message="failed to create driver from callback &apos;script14668754811001314453061$_run_closure1@1f8b6b0&apos;" type="geb.driver.DriverCreationException">geb.driver.DriverCreationException: failed to create driver from callback &apos;script14668754811001314453061$_run_closure1@1f8b6b0&apos;
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -162,7 +174,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:107)
-	at script14668694643041314453061$_run_closure1.doCall(script14668694643041314453061.groovy:8)
+	at script14668754811001314453061$_run_closure1.doCall(script14668754811001314453061.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -195,8 +207,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at TestApp$_run_closure1.doCall(TestApp.groovy:32)
 </error>
   </testcase>
-  <testcase classname="grails.plugin.cucumber.CucumberTest" name="compartilhar obra na rede social" time="0.056">
-    <error message="failed to create driver from callback &apos;script14668694644251314453061$_run_closure1@6e2f2fda&apos;" type="geb.driver.DriverCreationException">geb.driver.DriverCreationException: failed to create driver from callback &apos;script14668694644251314453061$_run_closure1@6e2f2fda&apos;
+  <testcase classname="grails.plugin.cucumber.CucumberTest" name="compartilhar obra na rede social" time="0.035">
+    <error message="failed to create driver from callback &apos;script14668754812271314453061$_run_closure1@4f69635f&apos;" type="geb.driver.DriverCreationException">geb.driver.DriverCreationException: failed to create driver from callback &apos;script14668754812271314453061$_run_closure1@4f69635f&apos;
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -218,7 +230,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
 	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
 	at org.openqa.selenium.chrome.ChromeDriver.&lt;init&gt;(ChromeDriver.java:107)
-	at script14668694644251314453061$_run_closure1.doCall(script14668694644251314453061.groovy:8)
+	at script14668754812271314453061$_run_closure1.doCall(script14668754812271314453061.groovy:8)
 	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
 	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
 	at geb.driver.CachingDriverFactory$SimpleCache.get(CachingDriverFactory.groovy:30)
@@ -268,12 +280,24 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
   Scenario: Buscar percentual de obras atrasadas        # Obra.feature:12
     Given que o sistema tem uma lista de "4" Obras      # ObraSteps.groovy:62
     And o sistema tem "3" obra atrasada                 # ObraSteps.groovy:68
+      groovy.lang.MissingMethodException: No signature of method: java.util.LinkedHashMap.isAtrasada() is applicable for argument types: () values: []
+      	at steps.TestDataAndOperations.qtdObrasAtrasadas(TestDataAndOperations.groovy:258)
+      	at steps.TestDataAndOperations$qtdObrasAtrasadas$6.call(Unknown Source)
+      	at ObraSteps$_run_closure7.doCall(ObraSteps.groovy:70)
+      	at ✽.And o sistema tem "3" obra atrasada(Obra.feature:14)
+
     Then o percentual de atrasos sera de "75" por cento # ObraSteps.groovy:74
 
 --Output from Adicionar obra existente--
   Scenario: Buscar percentual de obras com orcamento estourado         # Obra.feature:17
     Given que o sistema tem uma lista de "4" Obras com seus orcamentos # ObraSteps.groovy:83
     And o sistema tem "3" obra com orcamento estourado                 # ObraSteps.groovy:89
+      groovy.lang.MissingMethodException: No signature of method: java.util.LinkedHashMap.isAtrasada() is applicable for argument types: () values: []
+      	at steps.TestDataAndOperations.qtdObrasAtrasadas(TestDataAndOperations.groovy:258)
+      	at steps.TestDataAndOperations$qtdObrasAtrasadas$6.call(Unknown Source)
+      	at ObraSteps$_run_closure10.doCall(ObraSteps.groovy:91)
+      	at ✽.And o sistema tem "3" obra com orcamento estourado(Obra.feature:19)
+
     Then o percentual de orcamento estourado sera de "75" por cento    # ObraSteps.groovy:95
 
 --Output from Atualizar obra--
@@ -322,7 +346,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
   #GUI
   Scenario: Receber atualizacoes da obra por email                                                       # Obra.feature:43
     Given eu estou visualizando a obra "Praca do arsenal"                                                # ObraSteps.groovy:138
-      geb.driver.DriverCreationException: failed to create driver from callback 'script14668694636301314453061$_run_closure1@5f019587'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script14668754796731314453061$_run_closure1@2b0f175c'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -348,8 +372,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script14668694636301314453061$_run_closure1.doCall(script14668694636301314453061.groovy:8)
-      	at script14668694636301314453061$_run_closure1.doCall(script14668694636301314453061.groovy)
+      	at script14668754796731314453061$_run_closure1.doCall(script14668754796731314453061.groovy:8)
+      	at script14668754796731314453061$_run_closure1.doCall(script14668754796731314453061.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -422,7 +446,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 --Output from Nova pagina de obra--
   Scenario: Visualizar obra                                                                            # Obra.feature:49
     Given que o usuario esta no menu de obras e quer visualizar os detalhes da obra "Praca do arsenal" # ObraSteps.groovy:108
-      geb.driver.DriverCreationException: failed to create driver from callback 'script14668694640951314453061$_run_closure1@59fce433'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script14668754807401314453061$_run_closure1@60dcbbf4'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -448,8 +472,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script14668694640951314453061$_run_closure1.doCall(script14668694640951314453061.groovy:8)
-      	at script14668694640951314453061$_run_closure1.doCall(script14668694640951314453061.groovy)
+      	at script14668754807401314453061$_run_closure1.doCall(script14668754807401314453061.groovy:8)
+      	at script14668754807401314453061$_run_closure1.doCall(script14668754807401314453061.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -521,7 +545,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 --Output from compartilhar obra na rede social--
   Scenario: Nova pagina de obra                                                                         # Obra.feature:54
     Given eu estou no menu de obras e nao existe uma obra com nome "Praca do Arsenal" na lista de obras # ObraSteps.groovy:239
-      geb.driver.DriverCreationException: failed to create driver from callback 'script14668694643041314453061$_run_closure1@583f6355'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script14668754811001314453061$_run_closure1@1f8b6b0'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -547,8 +571,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script14668694643041314453061$_run_closure1.doCall(script14668694643041314453061.groovy:8)
-      	at script14668694643041314453061$_run_closure1.doCall(script14668694643041314453061.groovy)
+      	at script14668754811001314453061$_run_closure1.doCall(script14668754811001314453061.groovy:8)
+      	at script14668754811001314453061$_run_closure1.doCall(script14668754811001314453061.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -621,7 +645,7 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
 
   Scenario: compartilhar obra na rede social                                           # Obra.feature:61
     Given eu estou visualizando a obra "Praca do arsenal"                              # ObraSteps.groovy:138
-      geb.driver.DriverCreationException: failed to create driver from callback 'script14668694644251314453061$_run_closure1@6e2f2fda'
+      geb.driver.DriverCreationException: failed to create driver from callback 'script14668754812271314453061$_run_closure1@4f69635f'
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:35)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)
@@ -647,8 +671,8 @@ Caused by: java.lang.IllegalStateException: The driver executable does not exist
       	at org.openqa.selenium.remote.service.DriverService.findExecutable(DriverService.java:112)
       	at org.openqa.selenium.chrome.ChromeDriverService.createDefaultService(ChromeDriverService.java:75)
       	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:107)
-      	at script14668694644251314453061$_run_closure1.doCall(script14668694644251314453061.groovy:8)
-      	at script14668694644251314453061$_run_closure1.doCall(script14668694644251314453061.groovy)
+      	at script14668754812271314453061$_run_closure1.doCall(script14668754812271314453061.groovy:8)
+      	at script14668754812271314453061$_run_closure1.doCall(script14668754812271314453061.groovy)
       	at geb.driver.CallbackDriverFactory.getDriver(CallbackDriverFactory.groovy:29)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy:80)
       	at geb.driver.CachingDriverFactory$_getDriver_closure3.doCall(CachingDriverFactory.groovy)

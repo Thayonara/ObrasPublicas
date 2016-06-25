@@ -19,7 +19,7 @@ class ObraController {
         float taxaAtrasada=0
         if(Obra.list().size()>0) {
             for (int i = 0; i < Obra.list().size(); i++) {
-                if (Obra.list().get(i).dataTermino > Obra.list().get(i).dataPlanejada) {
+                if (Obra.list().get(i).isAtrasada()) {
                     taxaAtrasada++
                 }
             }
@@ -36,7 +36,7 @@ class ObraController {
         if(Obra.list().size()>0) {
 
             for (int i = 0; i < Obra.list().size(); i++) {
-                if (Obra.list().get(i).precoFinal > Obra.list().get(i).precoPlanejado) {
+                if (Obra.list().get(i).isEstourada()) {
                     taxaEstouro++
                 }
             }
